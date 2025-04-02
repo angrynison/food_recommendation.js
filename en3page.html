@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel = "stylehseet">
+        <link rel = "stylesheet" type = "text/css" href="style.css">
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+        <script type="text/javascript" src="lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="js/Login.js"></script>
+        <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <title>Insert title here</title>
+    </head>
+    <body>
+        <!-- section1 -->
+        <div class = "wrap">
+            <div class = "intro_bg">
+                <div class="header">
+                        <div class="searchArea"> <!--구역나누기 --> 
+                            <!-- <form>
+                                <input type = "search" placeholder = "Search">
+                                <span>검색</span>
+                            </form> -->
+                        <intput type ="search" placeholder="Search">
+                        </div>
+                        <ul class="nav">
+                            <li><a href="#" onClick="location.href='en1page.html'">HOME</a></li>
+                            <li><a href="#" onClick="location.href='en2page.html'">IMFORMATION</a></li>
+                            <li><a href="#" onClick="location.href='en3page.html'">RECEIPE</a></li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- input 구현 -->
+         <!-- ppt -->
+        <div style="text-align: center;">
+            <center>
+            <table>
+                <tr>
+                    <td><label>재료입력</label></td>
+                    <td><input type="text" id="source" placeholder="재료를 입력하세요."></td>
+                     <!-- ppt --><td rowspan="2"><button id="btnLogin" onclick="getRecipe()">재료입력</button></td>
+                </tr>
+            </table>
+            </center>
+        </div>
+        <br>
+        <br>
+        <div id="title" style="text-align: center;"></div>
+        <br>
+
+        <div style="text-align: center;">
+            <img id="title_img" width="500px" height="500px" style="text-align: center;"/>
+        </div>
+        <br>
+        <br>
+        <div id="sourcesList" style="text-align: center;"></div>
+        <br>
+        <br>
+        <div id="recipesList" style="text-align: center;"></div>
+        <!-- ppt -->
+        <script>
+            function getRecipe(){
+
+                var source = document.getElementById('source').value;
+                //ppt
+                $.ajax({
+                    type: 'get',
+                    async: true,
+                    //ppt
+                    url: "http://localhost:3000/recipe/getRecipe?ingredient=" + source,
+                    dataType:"jsonp",
+                    jsonpCallback:'myCallback',
+                    jsonp:'myCallback',
+                    //ppt
+                    success : function(data, textStatus) {
+
+                        console.log(data)
+
+                        let t_value = document.getElementById('title');
+                        t_value.innerHTML = '';
+
+                        let t_img = document.getElementById('title_img');
+                        t_img.src = '';
+
+                        let s_value = document.getElementById('sourcesList');
+                        s_value.innerHTML = '';
+
+                        let r_value = document.getElementById('recipesList');
+                        r_value.innerHTML = '';
+                        //ppt
+                        if (data){
+                            const title = data.title;
+                            const img = data.img;
+                            const sourcesList = data.sourcesList;
+                            const recipesList = data.recipesList;
+
+                            let t_value = document.getElementById('title');
+                            let s_value = document.getElementById('sourcesList');
+                            let r_value = document.getElementById('recipesList');
+
+                            t_value.innerHTML = title;
+                            t_img.src = img;
+
+                            sourcesList.forEach(e => {
+                                s_value.innerHTML += `${e.title}<br>`;
+
+                                e.list.forEach(x => {
+                                    s_value.innerHTML += `${x.name} ${x.volume}<br>`;
+                                })
+
+                                s_value.innerHTML += `<br>`;
+                            });
+
+                            r_value.innerHTML = '[조리순서]<br>';
+                            recipesList.forEach(e => {
+                                r_value.innerHTML += `${e}<br>`;
+                            });
+                        }
+                    },
+                    //ppt
+                    error: function(err){
+                        console.log(err, 'err')
+                    },
+                })
+            }
+
+
+        </script>
+
+       
+
+    </body>
+</html>
