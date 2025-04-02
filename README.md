@@ -14,26 +14,35 @@
 
 설치 방법 
 - 저장소 복제
+  
 ```
 git clone https://github.com/angrynison/food_recommendation.js.git
 ```
+
 ```
 cd food_recommendation.js  
 ```
--의존성 설치
+
+- 의존성 설치
+
 ```
 npm install
+```
 
 ## 실행 방법
 
 - 서버 시작
+- 
 ```
 node app.js  
+```
 
--API 테스트:
+- API 테스트:
 브라우저 또는 Postman으로 다음 URL 요청:
+
 ```
 http://localhost:8080/recipe/getRecipe?ingredient=감자&myCallback=callback
+```
 
 # 만개의 레시피 공개 API 사용
 # 외부 API 변경 시 스크래핑 로직 업데이트가 필요할 수 있습니다.
