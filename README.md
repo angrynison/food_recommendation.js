@@ -15,10 +15,11 @@
 설치 방법 
 - 저장소 복제
 ```
-git clone https://github.com/angrynison/food_recommendation.js.git  
+git clone https://github.com/angrynison/food_recommendation.js.git
+```
 ```
 cd food_recommendation.js  
-
+```
 -의존성 설치
 ```
 npm install
