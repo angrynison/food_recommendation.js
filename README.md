@@ -44,9 +44,9 @@ node app.js
 http://localhost:8080/recipe/getRecipe?ingredient=감자&myCallback=callback
 ```
 
-# 만개의 레시피 공개 API 사용
-# 외부 API 변경 시 스크래핑 로직 업데이트가 필요할 수 있습니다.
-# 프로젝트 구조
+- 만개의 레시피 공개 API 사용
+- 외부 API 변경 시 스크래핑 로직 업데이트가 필요할 수 있습니다.
+- 프로젝트 구조
 ```
 food_recommendation.js/
 ├── bin/                # 서버 실행 스크립트 (확인되지 않음)
