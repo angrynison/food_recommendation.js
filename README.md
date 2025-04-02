@@ -32,7 +32,7 @@ npm install
 ## 실행 방법
 
 - 서버 시작
-- 
+  
 ```
 node app.js  
 ```
@@ -47,6 +47,7 @@ http://localhost:8080/recipe/getRecipe?ingredient=감자&myCallback=callback
 # 만개의 레시피 공개 API 사용
 # 외부 API 변경 시 스크래핑 로직 업데이트가 필요할 수 있습니다.
 # 프로젝트 구조
+```
 food_recommendation.js/
 ├── bin/                # 서버 실행 스크립트 (확인되지 않음)
 ├── node_modules/       # 의존성 패키지
@@ -59,3 +60,4 @@ food_recommendation.js/
 ├── app.js              # Express 앱 메인 파일
 ├── package.json        # 프로젝트 의존성 및 스크립트
 └── package-lock.json   # 패키지 버전 고정
+```
